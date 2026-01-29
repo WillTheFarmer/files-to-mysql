@@ -20,7 +20,7 @@
       "path": "data/apache_error/",
       "recursive": false,
       "interval": 15,
-      "processList": ["apacheErrorLoad","apacheErrorParse","apacheErrorImport"],
+      "process_list": ["apacheErrorLoad","apacheErrorParse","apacheErrorImport"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -32,7 +32,7 @@
       "path": "data/apache_common/",
       "recursive": false,
       "interval": 25,
-      "processList": ["apacheCombinedLoad"],
+      "process_list": ["apacheCombinedLoad"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -44,7 +44,7 @@
       "path": "data/apache_combined/",
       "recursive": false,
       "interval": 25,
-      "processList": ["apacheCombinedLoad","apacheCombinedParse"],
+      "process_list": ["apacheCombinedLoad","apacheCombinedParse"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -56,7 +56,7 @@
       "path": "data/apache_vhost/",
       "recursive": false,
       "interval": 15,
-      "processList": ["apacheVhostLoad"],
+      "process_list": ["apacheVhostLoad"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -68,7 +68,7 @@
       "path": "data/apache_csv/",
       "recursive": false,
       "interval": 15,
-      "processList": ["apacheCsvLoad","apacheCsvParse","apacheCsvImport"],
+      "process_list": ["apacheCsvLoad","apacheCsvParse","apacheCsvImport"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -80,7 +80,7 @@
       "path": "data/nginx_error/",
       "recursive": false,
       "interval": 15,
-      "processList": ["nginxErrorLoad","nginxErrorParse","nginxErrorImport"],
+      "process_list": ["nginxErrorLoad","nginxErrorParse","nginxErrorImport"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
     {
@@ -92,7 +92,7 @@
       "path": "data/nginx_combined/",
       "recursive": false,
       "interval": 15,
-      "processList": ["nginxCombinedLoad","nginxCombinedParse","nginxCombinedImport"],
+      "process_list": ["nginxCombinedLoad","nginxCombinedParse","nginxCombinedImport"],
       "lastUpdated": "2026-01-01T10:00:00Z"
     }
   ],
@@ -124,8 +124,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_error_apache",
-        "dbModuleParm1": "default"
+        "module_name": "parse_error_apache",
+        "module_parm1": "default"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -138,8 +138,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_error_apache",
-        "dbModuleParm1": "default"
+        "module_name": "import_error_apache",
+        "module_parm1": "default"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -170,8 +170,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_access_apache",
-        "dbModuleParm1": "combined"
+        "module_name": "parse_access_apache",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -184,8 +184,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_access_apache",
-        "dbModuleParm1": "combined"
+        "module_name": "import_access_apache",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -216,8 +216,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_access_apache",
-        "dbModuleParm1": "combined"
+        "module_name": "parse_access_apache",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -230,8 +230,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_access_apache",
-        "dbModuleParm1": "combined"
+        "module_name": "import_access_apache",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -262,8 +262,8 @@
       "status": "InActive",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_access_apache",
-        "dbModuleParm1": "Vhost"
+        "module_name": "parse_access_apache",
+        "module_parm1": "Vhost"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -276,8 +276,8 @@
       "status": "InActive",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_access_apache",
-        "dbModuleParm1": "Vhost"
+        "module_name": "import_access_apache",
+        "module_parm1": "Vhost"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -308,8 +308,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_access_apache",
-        "dbModuleParm1": "csv2mysql"
+        "module_name": "parse_access_apache",
+        "module_parm1": "csv2mysql"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -322,8 +322,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_access_apache",
-        "dbModuleParm1": "csv2mysql"
+        "module_name": "import_access_apache",
+        "module_parm1": "csv2mysql"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -354,8 +354,8 @@
       "status": "InActive",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_error_nginx",
-        "dbModuleParm1": "nginx"
+        "module_name": "parse_error_nginx",
+        "module_parm1": "nginx"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -368,8 +368,8 @@
       "status": "InActive",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_error_nginx",
-        "dbModuleParm1": "nginx"
+        "module_name": "import_error_nginx",
+        "module_parm1": "nginx"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -400,8 +400,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "parse_access_nginx",
-        "dbModuleParm1": "combined"
+        "module_name": "parse_access_nginx",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -414,8 +414,8 @@
       "status": "Active",
       "attributes": {
         "log": 2,
-        "dbModuleName": "import_access_nginx",
-        "dbModuleParm1": "combined"
+        "module_name": "import_access_nginx",
+        "module_parm1": "combined"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -440,8 +440,8 @@
       "status": "Active",
       "attributes": {
         "log": 1,
-        "dbModuleName": "normalize_useragent",
-        "dbModuleParm1": "Python Processed"
+        "module_name": "normalize_useragent",
+        "module_parm1": "Python Processed"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     },
@@ -468,8 +468,8 @@
       "status": "Active",
       "attributes": {
         "log": 1,
-        "dbModuleName": "normalize_client",
-        "dbModuleParm1": "Python Processed"
+        "module_name": "normalize_client",
+        "module_parm1": "Python Processed"
       },
       "lastUpdated": "2026-01-01T10:00:00Z"
     }

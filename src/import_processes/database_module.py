@@ -39,14 +39,14 @@ def process(parms):
     mod.set_defaults()
 
     display_log = parms.get("log")
-    dbModuleName = parms.get("dbModuleName")
-    dbModuleParm1 = parms.get("dbModuleParm1")
+    module_name = parms.get("module_name")
+    module_parm1 = parms.get("module_parm1")
     
     mod.cursor = app.dbConnection.cursor()
 
     try:
-        mod.cursor.callproc(dbModuleName,
-                            [dbModuleParm1,
+        mod.cursor.callproc(module_name,
+                            [module_parm1,
                             str(app.importProcessID)])
 
     except pymysql.Error as e:
@@ -55,7 +55,7 @@ def process(parms):
 
         error_code = e.args[0]
         error_message = e.args[1]
-        print(f"Error : Stored Procedure : {dbModuleName} Parms : {dbModuleParm1} - Code {error_code} - {error_message}")
+        print(f"Error : Stored Procedure : {module_name} Parms : {module_parm1} - Code {error_code} - {error_message}")
 
 
         # Conditional handling based on the specific error
@@ -78,7 +78,7 @@ def process(parms):
 
     except Exception as e:
         errorCount += 1
-        add_error({__name__},{type(e).__name__}, f"Stored Procedure : {dbModuleName} with Parms : {dbModuleParm1} failed", e)
+        add_error({__name__},{type(e).__name__}, f"Stored Procedure : {module_name} with Parms : {module_parm1} failed", e)
 
     app.dbConnection.commit()
 

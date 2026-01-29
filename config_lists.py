@@ -25,8 +25,8 @@ if config:
            attrValues = {"Parameter": attributes["path"]} 
 #           attrValues = {"Path": attributes["path"],"Recursive": attributes["recursive"]} 
         elif process.get("moduleName") == "databaseModule":
-           attrValues = {"Parameter": attributes["dbModuleName"] + " - " + attributes["dbModuleParm1"]} 
-#           attrValues = {"Module": attributes["dbModuleName"],"Parameter": attributes["dbModuleParm1"]} 
+           attrValues = {"Parameter": attributes["module_name"] + " - " + attributes["module_parm1"]} 
+#           attrValues = {"Module": attributes["module_name"],"Parameter": attributes["module_parm1"]} 
         
         processInfo.update(attrValues)
         process_list.append(processInfo)
@@ -35,7 +35,7 @@ if config:
 
 # Create any number of observers. Each log format will require a separate observer to associate proper import processes. Execute a single LOAD process. Other processes executed somewhere else.
     observer_list = []
-    print(f"{color.fg.GREEN}Observer List{color.fg.YELLOW} - Each record is a watchDog Observer Schedule. Each Observer executes associated import processes - {color.fg.RED}(processList){color.END}")
+    print(f"{color.fg.GREEN}Observer List{color.fg.YELLOW} - Each record is a watchDog Observer Schedule. Each Observer executes associated import processes - {color.fg.RED}(process_list){color.END}")
     for observer in config['observers']:
         observerInfo = {"Status": observer.get("status"),
                         "id": observer.get("id"),
@@ -43,7 +43,7 @@ if config:
                         "path": observer.get("path"),
                         "recursive": observer.get("recursive"),
                         "interval":  observer.get("interval"),
-                        "processList": observer.get("processList")}
+                        "process_list": observer.get("process_list")}
 
         observer_list.append(observerInfo)
 

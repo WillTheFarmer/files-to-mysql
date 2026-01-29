@@ -169,7 +169,7 @@ def execute_process(process):
     except FileNotFoundError:
         add_error({__name__},{type(e).__name__}, {e}, e)
 
-def process_files(processList=[]):
+def process_files(process_list=[]):
     # display console message log header
     print (f"{color.fg.YELLOW}{color.style.BRIGHT}ProcessLogs start: {datetime.now():%Y-%m-%d %H:%M:%S} | Host: {app.host_name} | Port: {app.host_port}{color.END}") 
 
@@ -196,24 +196,24 @@ def process_files(processList=[]):
     # list for process execution information summary report
     log_processes = []
 
-    # starting collection to filter.A Parameter can be passed - processList - List[] of processids for flexibility.
+    # starting collection to filter.A Parameter can be passed - process_list - List[] of processids for flexibility.
     allProcesses = config['processes']
 
-    # the default filter - if processList is EMPTY - only processes with status = "Active"
+    # the default filter - if process_list is EMPTY - only processes with status = "Active"
     # filtering options are endless. watchDog Observers pass List[] of processid to execute in the order to execute.
     log_file = ""
 
-    if not processList:
+    if not process_list:
         filteredProcesses = [logformat for logformat in allProcesses if logformat['status'] == 'Active']
     else:
-        listItems = len(processList)
-        # print(f"Process List: {processList} with count of {len(processList)}")
+        listItems = len(process_list)
+        # print(f"Process List: {process_list} with count of {len(process_list)}")
         # get the file and path to process. 
-        log_file = processList[listItems-1]
+        log_file = process_list[listItems-1]
         # this removes the file to be processed. 
-        processList.pop(-1)
-        # print(f"Process Filter: {processList} with count of {len(processList)} - file: {log_file}")
-        filteredProcesses = [process for process in allProcesses if process["id"] in processList]
+        process_list.pop(-1)
+        # print(f"Process Filter: {process_list} with count of {len(process_list)} - file: {log_file}")
+        filteredProcesses = [process for process in allProcesses if process["id"] in process_list]
 
     for process in filteredProcesses:
         if log_file:

@@ -11,7 +11,7 @@
 # CHANGELOG.md in repository - https://github.com/WillTheFarmer/http-logs-to-mysql
 """
 :script: files_watch.py
-:synopsis: Polls paths in config.json collection for httpLogs2MySQL application. Event passes processList & file to process_files() 
+:synopsis: Polls paths in config.json collection for httpLogs2MySQL application. Event passes process_list & file to process_files() 
 :author: Will Raymond <farmfreshsoftware@gmail.com>
 """
 # To access a custom property of a watchdog event handler from your main While True loop, 
@@ -49,17 +49,17 @@ from pathlib import Path
 
 class ProcessFile(FileSystemEventHandler):
     processFiles = 0
-    def __init__(self, queue, processList):
+    def __init__(self, queue, process_list):
         super().__init__()
         self.queue = queue # Store the queue instance
-        self.processList = processList #  List [] of processIDs - import processes to execute in series based on file type
+        self.process_list = process_list #  List [] of processIDs - import processes to execute in series based on file type
 
     def on_created(self, event):
         if not event.is_directory:
             # Put the event information into the queue
             self.processFiles = 3
-            self.processList.append(event.src_path)
-            self.queue.put(self.processList)
+            self.process_list.append(event.src_path)
+            self.queue.put(self.process_list)
 
     def on_modified(self, event):
         if not event.is_directory:
@@ -69,7 +69,7 @@ class ProcessFile(FileSystemEventHandler):
     def on_any_event(self, event):
         if event.event_type == 'created' and event.is_directory == False:
             self.processFiles = 1
-        #print(f"Event: {color.fg.REDI}{event.event_type}{color.END} File: {color.fg.REDI}{event.src_path}{color.END} Processes: {color.fg.REDI}{self.processList}{color.END}")
+        #print(f"Event: {color.fg.REDI}{event.event_type}{color.END} File: {color.fg.REDI}{event.src_path}{color.END} Processes: {color.fg.REDI}{self.process_list}{color.END}")
 
 if __name__ == "__main__":
     # Create a thread-safe queue
@@ -81,14 +81,14 @@ if __name__ == "__main__":
         attrValues = {}
         for observer in config['observers']:
 
-            # print(f"Process List : {observer.get("processList")}")
+            # print(f"Process List : {observer.get("process_list")}")
             observerInfo = {"Status": observer.get("status"),
                                 "id": observer.get("id"),
                                 "name": observer.get("name"),
                                 "path": observer.get("path"),
                                 "recursive": observer.get("recursive"),
                                 "interval":  observer.get("interval"),
-                                "processList": observer.get("processList")}
+                                "process_list": observer.get("process_list")}
 
             file_path = Path(observer.get("path"))
 
@@ -98,7 +98,7 @@ if __name__ == "__main__":
                 watch_path = observer.get("path")
                 watch_recursive = observer.get("recursive")
                 watch_interval = observer.get("interval")
-                watch_processes = observer.get("processList")
+                watch_processes = observer.get("process_list")
 
                 # print(f"watch_processes list: {watch_processes}")
                 event_handler = ProcessFile(event_queue, watch_processes)
@@ -113,7 +113,7 @@ if __name__ == "__main__":
             observers_list.append(observerInfo)
 
         watchdogObserver.start()
-        print(f"{color.fg.GREEN}Observer List{color.fg.YELLOW} - Each record is a watchDog Observer Schedule. Each Observer executes associated import processes - {color.fg.RED}(processList){color.END}")
+        print(f"{color.fg.GREEN}Observer List{color.fg.YELLOW} - Each record is a watchDog Observer Schedule. Each Observer executes associated import processes - {color.fg.RED}(process_list){color.END}")
         print(tabulate(observers_list, headers='keys', tablefmt='github'))
 
     try:
