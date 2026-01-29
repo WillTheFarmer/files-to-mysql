@@ -42,7 +42,11 @@ I stripped the other format code as starting point. From documentation I read NG
 
 The Apache and NGINX code demonstrates how to incorporate without code modification of current processes.
 
-Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats. When starting project I thoroughly researched and tested all Apache log formats. I have not done any of that for NGINX other than read documentation. The repository data NGINX log files are from any NGINX server. 
+Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats. When starting project I thoroughly researched and tested all Apache log formats. I have not done any of that for NGINX other than read documentation.
+
+***Repository NGINX files are sandard access and error formats from new NGINX server*** 
+
+NGINX log files in `/data/nginx_combined/` and `/data/nginx_error/` are from new NGINX server.
 
 MySQL stored procedure code for NGINX are a stripped down copy of Apache code. 
 

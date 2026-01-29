@@ -2,6 +2,10 @@ Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats.
 
 Thoroughly researched and tested all Apache log formats. I have not done that for NGINX yet. I read documentation and several online sources. 
 
+***Repository NGINX files are sandard access and error formats from new NGINX server*** 
+
+NGINX log files in `/data/nginx_combined/` and `/data/nginx_error/` are from new NGINX server.
+
 NGINX standard access and error format log files in `/data/nginx_combined/` and `/data/nginx_error/` are from a NGINX server.
 
 MySQL stored procedure code for NGINX are stripped down copies of Apache twin. 
