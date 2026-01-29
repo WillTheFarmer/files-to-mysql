@@ -36,15 +36,9 @@ Multiple folders and formats can be processed running different Observers with p
 
 The data-driven properties allows flexibility and expandability.
 
-NGINX Stored Procedures are copies of Apache Stored Procedures stripped for Combined `combined` only - `FIND_IN_SET(in_processName, "csv2mysql,vhost,combined") = 0`. 
+The Apache and NGINX code demonstrates how to incorporate without code modification of current processes.
 
-I stripped the other format code as starting point. From documentation I read NGINX standard is same as Apache combined. I have not not examined NGINX data yet.
-
-Apache and NGINX code demonstrates how to incorporate without code modification of current processes.
-
-Python naming convention fixes are done or close. `config.json` file structure changes are done.
-
-Thoroughly researched and tested all Apache log formats. I read documentation and online sources. I have not done that for NGINX yet.
+Thoroughly researched and tested all Apache log formats. I read NGINX documentation and online sources. I have not done that for NGINX yet.
 
 ***Repository NGINX files are standard access and error formats from new NGINX server*** 
 
@@ -60,7 +54,9 @@ MySQL procedural files are copies of Apache code. Then stripped to code required
 
 `import_error_nginx.sql` started as copy of `import_error_apache.sql`
 
-Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats. When starting project I thoroughly researched and tested all Apache log formats. I have not done any of that for NGINX other than read documentation.
+Python naming convention fixes are done or close. `config.json` file structure changes are done.
+
+Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats.
 ### Process properties - Application Processes
 ![Process Properties](./images/process_properties.png)
 
