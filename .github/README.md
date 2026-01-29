@@ -34,7 +34,7 @@ Multiple folders and formats can be processed running different Observers with p
 
 `files_watch.py` executes `watchdog` which loads the Observers that call `main:process_files`.
 
-`files_import.py` executes `main:process_files` which runs the `config.json` Processes. The Processes collection can be filtered and ordered by Python and commented code is there. By default the application filters on status = 'Active'.
+`files_import.py` executes `main:process_files` which runs the `config.json` Processes. If no parameter is passed status = 'Active' is default.
 
 The data-driven properties allows flexibility and expandability.
 
