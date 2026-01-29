@@ -189,7 +189,7 @@ def process_files(process_list=[]):
     app.importLoadID = get_table_id("load")
 
     if app.errorCount > 0:
-        print("Error: Database Premissions most likely. Check messages in import_error TABLE")
+        print("Error: Database Function Permissions. Check messages in import_error TABLE")
         sys.exit(1) # Exit with error code 1
 
     app.dbConnection.commit()     
