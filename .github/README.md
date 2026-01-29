@@ -18,17 +18,17 @@
 
 To process different log format files in different directories the `config.json` Process collection is populated with different combinations of ***Process Datasets***. 
 
-Many `config.json` Process datasets contain `data_file_loader.py` or `database_module.py` for ***module_name*** property. These 2 modules are often reused with different `attributes` property values.
+Many `config.json` Process datasets contain `database_module.py` and `data_file_loader.py` for ***module_name*** property. These 2 modules are often reused with different `attributes` property values.
 
 3) All ***Process Modules*** have `process` method and ***ProcessProperties*** subclass `properties_process.py`. 
 
-4) `main:process_files` can be passed a `collection Filter` parameter. It can be a Process list (processID) to execute for any number of reasons. This makes the App more integrable and adaptable. 
+4) `main:process_files` can be passed a ***collection filter*** parameter. It can be a Process list (processID) to execute for any number of reasons. This makes the App more integrable and adaptable.
 
 If no parameter is passed `main:process_files` executes `config.json` Processes for status = 'Active'.
 
 5) All ***Observers*** watch using ***Observer datasets*** : `path`, `recursive`, `interval` for the arrival of new files in `path` values.
 
-Each Observer dataset also has a `process_list` property. The `process_list` holds a Python List of `[processid]`. It is a subset of `id` property from `config.json` Processes collection. 
+Each Observer dataset also has `process_list` property. The `process_list` holds a Python List of `[processid]`. It is a subset of `id` property from `config.json` Processes collection. 
 
 The `process_list` property and watchdog `event.src_path` property are passed to `main:process_files` which overrides configured Process executions.
 
@@ -36,7 +36,9 @@ Multiple folders and formats can be processed running different Observers with p
 
 The data-driven properties allows flexibility and expandability.
 
-The NGINX MySQL Stored Procedures are based on the Apache. Additional data files can be incorporated without code modification of current processes.
+NGINX Stored Procedures are copies of Apache Stored Procedures stripped for Combined `combined` only - `FIND_IN_SET(in_processName, "csv2mysql,vhost,combined") = 0`. I stripped the other format code as a startimng point. From documentation I read NGINX standard is same as Apach combined. I have not not examined NGINX data yet. 
+
+The Apache and NGINX stored procedure code sample demonstrates how to incorporate without code modification of current processes. I am straight out on this and other projects but I am committed to this code cleanup until Ground Hog Day.
 ### Process properties - Application Processes
 ![Process Properties](./images/process_properties.png)
 
