@@ -12,19 +12,19 @@ if config:
 
     print(f"{color.fg.GREEN}Process List{color.fg.YELLOW} - Each record is different parameters passed to 1 of 4 Python Modules - {color.fg.RED}(Module Name){color.END}")
     for process in config['processes']:
-#        print(f"Process ID: {process.get("id")}. moduleName: {process.get("moduleName")}")
+#        print(f"Process ID: {process.get("id")}. module_name: {process.get("module_name")}")
         attrValues = {}
         processInfo = {"Status": process.get("status"),
                        "Process id": process.get("id"),
                        "Process Group": process.get("group"),
                        "Process Name": process.get("name"),
-                       "Module Name": process.get("moduleName")}
+                       "Module Name": process.get("module_name")}
 
         attributes = process.get("attributes")
-        if process.get("moduleName") == "fileLoader":
+        if process.get("module_name") == "data_file_loader":
            attrValues = {"Parameter": attributes["path"]} 
 #           attrValues = {"Path": attributes["path"],"Recursive": attributes["recursive"]} 
-        elif process.get("moduleName") == "databaseModule":
+        elif process.get("module_name") == "database_module":
            attrValues = {"Parameter": attributes["module_name"] + " - " + attributes["module_parm1"]} 
 #           attrValues = {"Module": attributes["module_name"],"Parameter": attributes["module_parm1"]} 
         

@@ -8,7 +8,7 @@ from apis.color_class import color
 # used EXIT if missing required IDs : app.importDeviceID, app.importClientID and app.importLoadID    
 import sys
 
-def add_error(moduleName: str, exceptionType: str, message: str, data=None):
+def add_error(module_name: str, exceptionType: str, message: str, data=None):
 
     app.errorCount += 1
 
@@ -22,7 +22,7 @@ def add_error(moduleName: str, exceptionType: str, message: str, data=None):
 
     if app.error_details:
         """First MySQL error does not populate warnings. This is a known issue. Just checking behavior messaging"""
-        print(f"module = {color.bg.YELLOW}{color.style.BRIGHT}{moduleName}{color.END} " \
+        print(f"module = {color.bg.YELLOW}{color.style.BRIGHT}{module_name}{color.END} " \
               f"exceptionType = {color.bg.YELLOW}{color.style.BRIGHT}{exceptionType}{color.END} " \
               f"message = {color.bg.YELLOW}{color.style.BRIGHT}{message}{color.END} " \
               f"app.importLoadID = {color.bg.YELLOW}{color.style.BRIGHT}{app.importLoadID}{color.END} " \
@@ -38,7 +38,7 @@ def add_error(moduleName: str, exceptionType: str, message: str, data=None):
           print(f"Length: {color.bg.YELLOW}{showWarningsLen}{color.END} showWarnings : {color.bg.YELLOW}{showWarnings}{color.END}")
 
     try:
-         app.cursor.callproc("errorLoad", [moduleName, errorMessage, str(app.importLoadID), str(app.importProcessID)])
+         app.cursor.callproc("errorLoad", [module_name, errorMessage, str(app.importLoadID), str(app.importProcessID)])
         
     except Exception as e:
         print(f"Database permissions problem : {e}")

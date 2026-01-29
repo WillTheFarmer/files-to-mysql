@@ -94,7 +94,7 @@
       "id": "apacheErrorLoad",
       "name": "Apache Error Load",
       "description": "Error Standard log files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Apache Error",
       "status": "Active",
       "attributes": {
@@ -111,7 +111,7 @@
       "id": "apacheErrorParse",
       "name": "Apache Error Parse",
       "description": "Apache Error being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Error",
       "status": "Active",
       "attributes": {
@@ -124,7 +124,7 @@
       "id": "apacheErrorImport",
       "name": "Apache Error Import",
       "description": "Apache Error being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Error",
       "status": "Active",
       "attributes": {
@@ -137,7 +137,7 @@
       "id": "apacheCommonLoad",
       "name": "Apache Common Load",
       "description": "Access Common log format.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Apache Common",
       "status": "Active",
       "attributes": {
@@ -154,7 +154,7 @@
       "id": "apacheCommonParse",
       "name": "Apache Common Parse",
       "description": "Apache Common being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Common",
       "status": "Active",
       "attributes": {
@@ -167,7 +167,7 @@
       "id": "apacheCommonImport",
       "name": "Apache Common Import",
       "description": "Apache Common being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Common",
       "status": "Active",
       "attributes": {
@@ -180,7 +180,7 @@
       "id": "apacheCombinedLoad",
       "name": "Apache Combined Load",
       "description": "Access Combined format files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Apache Combined",
       "status": "Active",
       "attributes": {
@@ -197,7 +197,7 @@
       "id": "apacheCombinedParse",
       "name": "Apache Combined Parse",
       "description": "Access Combined logs being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Combined",
       "status": "Active",
       "attributes": {
@@ -210,7 +210,7 @@
       "id": "apacheCombinedImport",
       "name": "Apache Combined Import",
       "description": "Access Combined logs being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Combined",
       "status": "Active",
       "attributes": {
@@ -223,7 +223,7 @@
       "id": "apacheVhostLoad",
       "name": "Apache Vhost Load",
       "description": "Access Vhost log format files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Apache Vhost",
       "status": "InActive",
       "attributes": {
@@ -240,7 +240,7 @@
       "id": "apacheVhostParse",
       "name": "Apache Vhost Parse",
       "description": "Access Vhost logs being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Vhost",
       "status": "InActive",
       "attributes": {
@@ -253,7 +253,7 @@
       "id": "apacheVhostImport",
       "name": "Apache Vhost Import",
       "description": "Access Vhost logs being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Vhost",
       "status": "InActive",
       "attributes": {
@@ -266,7 +266,7 @@
       "id": "apacheCsvLoad",
       "name": "Apache Access CSV Load",
       "description": "Access Comma Separated Values format files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Apache Csv",
       "status": "Active",
       "attributes": {
@@ -283,7 +283,7 @@
       "id": "apacheCsvParse",
       "name": "Apache Csv2 Parse",
       "description": "Access Csv logs being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Csv",
       "status": "Active",
       "attributes": {
@@ -296,7 +296,7 @@
       "id": "apacheCsvImport",
       "name": "Apache Csv Import",
       "description": "Access Csv logs being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Apache Csv",
       "status": "Active",
       "attributes": {
@@ -309,7 +309,7 @@
       "id": "nginxErrorLoad",
       "name": "NGINX Error Load",
       "description": "NGINX Standard Error format files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Nginx Error",
       "status": "Active",
       "attributes": {
@@ -326,7 +326,7 @@
       "id": "nginxErrorParse",
       "name": "NGINX Error Parse",
       "description": "NGINX error logs being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Nginx Error",
       "status": "InActive",
       "attributes": {
@@ -339,7 +339,7 @@
       "id": "nginxErrorImport",
       "name": "NGINX Error Import",
       "description": "NGINX error logs being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Nginx Error",
       "status": "InActive",
       "attributes": {
@@ -352,7 +352,7 @@
       "id": "nginxCombinedLoad",
       "name": "NGINX Combined Load",
       "description": "NGINX Access Combined format files loading.",
-      "moduleName": "fileLoader",
+      "module_name": "data_file_loader",
       "group": "Nginx Combined",
       "status": "Active",
       "attributes": {
@@ -369,7 +369,7 @@
       "id": "nginxCombinedParse",
       "name": "NGINX Combined Parse",
       "description": "NGINX Access Combined being parsed database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Nginx Combined",
       "status": "Active",
       "attributes": {
@@ -382,7 +382,7 @@
       "id": "nginxCombinedImport",
       "name": "NGINX Combined Import",
       "description": "NGINX Access Combined being imported database.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "Nginx Combined",
       "status": "Active",
       "attributes": {
@@ -395,7 +395,7 @@
       "id": "useragentEnrichment",
       "name": "User Agent Parsing",
       "description": "Slices and Dices your string.",
-      "moduleName": "userAgent",
+      "module_name": "data_enrichment_userAgent",
       "group": "DataEnhance",
       "status": "Active",
       "attributes": {
@@ -406,7 +406,7 @@
       "id": "useragentImport",
       "name": "User Agent Normalization",
       "description": "Normalizing User Agent data Start.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "DataEnhance",
       "status": "Active",
       "attributes": {
@@ -419,7 +419,7 @@
       "id": "geoipEnrichment",
       "name": "IP Address Data Extraction",
       "description": "Geolocation information related to IP",
-      "moduleName": "geoIP",
+      "module_name": "data_enrichment_geoIP",
       "group": "DataEnhance",
       "status": "Active",
       "attributes": {
@@ -432,7 +432,7 @@
       "id": "geoipImport",
       "name": "IP Address Normalizing",
       "description": "Normalizing IP Address data.",
-      "moduleName": "databaseModule",
+      "module_name": "database_module",
       "group": "DataEnhance",
       "status": "Active",
       "attributes": {

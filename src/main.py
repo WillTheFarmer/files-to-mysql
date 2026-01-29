@@ -110,7 +110,7 @@ def update_importProcess(data):
 
 def execute_process(process):
     # process info to feed to processes
-    moduleName  = process.get("moduleName")
+    module_name  = process.get("module_name")
     processParms = process["attributes"]
 
     processInfo = {}
@@ -129,7 +129,7 @@ def execute_process(process):
         app.importProcessID = get_table_id("process")
 
         # Use the factory to get the appropriate loader
-        importProcess = get_import_process(moduleName)
+        importProcess = get_import_process(module_name)
         #gererate new primary ID for import_process table
 
         try:
@@ -219,7 +219,7 @@ def process_files(process_list=[]):
         if log_file:
             process["attributes"]["log_file"] = log_file
 
-        processInfo = {"id": process.get("id"), "Module": process.get("moduleName")}
+        processInfo = {"id": process.get("id"), "Module": process.get("module_name")}
    
         try:
             data = execute_process(process)

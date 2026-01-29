@@ -15,17 +15,17 @@
 # synopsis: handles off the proper process to import load execution for httpLogs2MySQL application.
 # author: Will Raymond <farmfreshsoftware@gmail.com>
 
-from src.import_processes.data_file_loader import process as fileDataLoader
-from src.import_processes.database_module import process as dbModule
-from src.import_processes.data_enrichment_geoIP import process as geoipData
-from src.import_processes.data_enrichment_userAgent import process as userAgentData
+from src.import_processes.data_file_loader import process as data_file_loader_process
+from src.import_processes.database_module import process as database_module_process
+from src.import_processes.data_enrichment_geoIP import process as data_enrichment_geoIP_process
+from src.import_processes.data_enrichment_userAgent import process as data_enrichment_userAgent_process
 
 # The registry maps process types to loader functions
 LOADER_REGISTRY = {
-    'fileLoader': fileDataLoader,
-    'databaseModule': dbModule,
-    'geoIP': geoipData,
-    'userAgent': userAgentData
+    'data_file_loader': data_file_loader_process,
+    'database_module': database_module_process,
+    'data_enrichment_geoIP': data_enrichment_geoIP_process,
+    'data_enrichment_userAgent': data_enrichment_userAgent_process
 }
 
 def get_import_process(import_server_process):

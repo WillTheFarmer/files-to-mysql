@@ -18,7 +18,7 @@
 
 To process different log format files in different directories the `config.json` Process collection is populated with different combinations of ***Process Datasets***. 
 
-Many `config.json` datasets are `data_file_loader.py` and `database_module.py` module reused with different `attributes` property values.
+Many `config.json` Process datasets contain `data_file_loader.py` or `database_module.py` for ***module_name*** property. These 2 modules are often reused with different `attributes` property values.
 
 3) All ***Process Modules*** have `process` method and ***ProcessProperties*** subclass `properties_process.py`. 
 
