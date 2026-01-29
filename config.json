@@ -20,8 +20,7 @@
       "path": "data/apache_error/",
       "recursive": false,
       "interval": 15,
-      "process_list": ["apacheErrorLoad","apacheErrorParse","apacheErrorImport"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["apacheErrorLoad","apacheErrorParse","apacheErrorImport"]
     },
     {
       "id": "apacheCommon",
@@ -32,8 +31,7 @@
       "path": "data/apache_common/",
       "recursive": false,
       "interval": 25,
-      "process_list": ["apacheCombinedLoad"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["apacheCombinedLoad"]
     },
     {
       "id": "apacheCombined",
@@ -44,8 +42,7 @@
       "path": "data/apache_combined/",
       "recursive": false,
       "interval": 25,
-      "process_list": ["apacheCombinedLoad","apacheCombinedParse"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["apacheCombinedLoad","apacheCombinedParse"]
     },
     {
       "id": "apacheVhost",
@@ -56,8 +53,7 @@
       "path": "data/apache_vhost/",
       "recursive": false,
       "interval": 15,
-      "process_list": ["apacheVhostLoad"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["apacheVhostLoad"]
     },
     {
       "id": "apacheCsv",
@@ -68,8 +64,7 @@
       "path": "data/apache_csv/",
       "recursive": false,
       "interval": 15,
-      "process_list": ["apacheCsvLoad","apacheCsvParse","apacheCsvImport"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["apacheCsvLoad","apacheCsvParse","apacheCsvImport"]
     },
     {
       "id": "nginxError",
@@ -80,8 +75,7 @@
       "path": "data/nginx_error/",
       "recursive": false,
       "interval": 15,
-      "process_list": ["nginxErrorLoad","nginxErrorParse","nginxErrorImport"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["nginxErrorLoad","nginxErrorParse","nginxErrorImport"]
     },
     {
       "id": "nginxCombined",
@@ -92,8 +86,7 @@
       "path": "data/nginx_combined/",
       "recursive": false,
       "interval": 15,
-      "process_list": ["nginxCombinedLoad","nginxCombinedParse","nginxCombinedImport"],
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      "process_list": ["nginxCombinedLoad","nginxCombinedParse","nginxCombinedImport"]
     }
   ],
   "processes": [
@@ -112,8 +105,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheErrorParse",
@@ -126,8 +118,7 @@
         "log": 2,
         "module_name": "parse_error_apache",
         "module_parm1": "default"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheErrorImport",
@@ -140,8 +131,7 @@
         "log": 2,
         "module_name": "import_error_apache",
         "module_parm1": "default"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCommonLoad",
@@ -158,8 +148,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCommonParse",
@@ -172,8 +161,7 @@
         "log": 2,
         "module_name": "parse_access_apache",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCommonImport",
@@ -186,8 +174,7 @@
         "log": 2,
         "module_name": "import_access_apache",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCombinedLoad",
@@ -204,8 +191,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCombinedParse",
@@ -218,8 +204,7 @@
         "log": 2,
         "module_name": "parse_access_apache",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCombinedImport",
@@ -232,8 +217,7 @@
         "log": 2,
         "module_name": "import_access_apache",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheVhostLoad",
@@ -250,8 +234,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheVhostParse",
@@ -264,8 +247,7 @@
         "log": 2,
         "module_name": "parse_access_apache",
         "module_parm1": "Vhost"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheVhostImport",
@@ -278,8 +260,7 @@
         "log": 2,
         "module_name": "import_access_apache",
         "module_parm1": "Vhost"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCsvLoad",
@@ -296,8 +277,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCsvParse",
@@ -310,8 +290,7 @@
         "log": 2,
         "module_name": "parse_access_apache",
         "module_parm1": "csv2mysql"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "apacheCsvImport",
@@ -324,8 +303,7 @@
         "log": 2,
         "module_name": "import_access_apache",
         "module_parm1": "csv2mysql"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxErrorLoad",
@@ -342,8 +320,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxErrorParse",
@@ -356,8 +333,7 @@
         "log": 2,
         "module_name": "parse_error_nginx",
         "module_parm1": "nginx"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxErrorImport",
@@ -370,8 +346,7 @@
         "log": 2,
         "module_name": "import_error_nginx",
         "module_parm1": "nginx"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxCombinedLoad",
@@ -388,8 +363,7 @@
         "recursive": true,
         "server": "mydomain.com",
         "serverport": 443
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxCombinedParse",
@@ -402,8 +376,7 @@
         "log": 2,
         "module_name": "parse_access_nginx",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "nginxCombinedImport",
@@ -416,8 +389,7 @@
         "log": 2,
         "module_name": "import_access_nginx",
         "module_parm1": "combined"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "useragentEnrichment",
@@ -428,8 +400,7 @@
       "status": "Active",
       "attributes": {
         "log": 1
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "useragentImport",
@@ -442,8 +413,7 @@
         "log": 1,
         "module_name": "normalize_useragent",
         "module_parm1": "Python Processed"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "geoipEnrichment",
@@ -456,8 +426,7 @@
         "log": 1,
         "city": "data/downloads/maxmind/GeoLite2-City.mmdb",
         "asn": "data/downloads/maxmind/GeoLite2-ASN.mmdb"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     },
     {
       "id": "geoipImport",
@@ -470,8 +439,7 @@
         "log": 1,
         "module_name": "normalize_client",
         "module_parm1": "Python Processed"
-      },
-      "lastUpdated": "2026-01-01T10:00:00Z"
+      }
     }
   ]
 }
