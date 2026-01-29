@@ -40,9 +40,9 @@ The Apache and NGINX code demonstrates how to incorporate without code modificat
 
 Thoroughly researched and tested all Apache log formats. I read NGINX documentation and online sources. I have not done that for NGINX yet.
 
-***Repository NGINX files are standard access and error formats from new NGINX server*** 
+***Repository NGINX log files are standard access and error formats from new NGINX server*** 
 
-NGINX log files in `/data/nginx_combined/` and `/data/nginx_error/` are from new NGINX server.
+NGINX log files are in `/data/nginx_combined/` and `/data/nginx_error/`
 
 MySQL procedural files are copies of Apache code. Then stripped to code required to process `combined` format. 
 
