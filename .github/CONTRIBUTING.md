@@ -1,5 +1,7 @@
 Until Ground Hog Day I am full-time on Python Code cleanup and NGINX formats. 
 
+Python naming convention fixes are done or close. `config.json` file structure changes are done.
+
 Thoroughly researched and tested all Apache log formats. I have not done that for NGINX yet. I read documentation and several online sources. 
 
 ***Repository NGINX files are sandard access and error formats from new NGINX server*** 
