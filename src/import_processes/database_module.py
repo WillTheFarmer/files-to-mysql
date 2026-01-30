@@ -51,7 +51,7 @@ def process(parms):
 
     except pymysql.Error as e:
         mod.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
         error_code = e.args[0]
         error_message = e.args[1]
@@ -78,7 +78,7 @@ def process(parms):
 
     except Exception as e:
         error_count += 1
-        add_message( 0, {__name__},{type(e).__name__}, f"Stored Procedure : {module_name} with Parms : {module_parm1} failed", e)
+        add_message( 0, f"Stored Procedure : {module_name} with Parms : {module_parm1} failed", __name__ , type(e).__name__ , e)
 
     app.dbConnection.commit()
 

@@ -81,7 +81,7 @@ def process_file(rawFile):
 
     except Exception as e:
         mod.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     if days_since_imported is None:
 
@@ -106,7 +106,7 @@ def process_file(rawFile):
 
         except Exception as e:
             mod.error_count += 1
-            add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
         # LOAD DATA SQL String
         fileLoadSQL = ""
@@ -132,7 +132,7 @@ def process_file(rawFile):
 
         else:
             mod.error_count += 1
-            add_message( 0, {__name__},{type(e).__name__}, f"Process Log Format={mod.log_format} not found")
+            add_message( 0, f"Process Log Format={mod.log_format} not found", __name__ )
 
         if fileLoadSQL_format:
             # format is excepted - based on other app settings (config.json) figure out if server info components required for LOAD DATA string build
@@ -163,7 +163,7 @@ def process_file(rawFile):
 
             except pymysql.Error as e:
                 mod.error_count += 1
-                add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+                add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     elif mod.backup_days != 0:
         copy_backup_file(rawFile, days_since_imported)
@@ -215,7 +215,7 @@ def process(parms):
                       print(f"No record found for {filename}")
 
             except pymysql.Error as e:
-                add_message( 0, {__name__},{type(e).__name__}, {e})
+                add_message( 0, __name__ , type(e).__name__ , e )
                 mod.error_count += 1
 
         # Commit changes if the loop completes without a breaking error

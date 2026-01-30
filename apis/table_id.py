@@ -62,11 +62,11 @@ def get_table_id(table):
 
     except pymysql.Error as e:
         app.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     except Exception as e:
         app.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
         
     #print(f"table {table} id = {table_id}")
 

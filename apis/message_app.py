@@ -17,10 +17,10 @@ def add_message(message_code: int, message: str, module_name="", exceptionType="
     if message_code == 0:
         app.error_count += 1
 
-    processMessage = f"message - {message}"
+    processMessage = message
     
     if exceptionType:
-        processMessage = f"Error exceptionType : {exceptionType} - {processMessage}"
+        processMessage = f"{exceptionType} : {message}"
         
     #if data:
     #    print(f"Exception details: {data=}, {type(data)=}")        

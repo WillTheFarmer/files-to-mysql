@@ -80,21 +80,21 @@ def process(parms):
 
         except Exception as e:
             mod.warning_count += 1
-            add_message( 2, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 2, e , __name__ , type(e).__name__ ,  e)
 
         try:
             cityReader = geoip2.database.Reader(geoip_city_file)
 
         except Exception as e:
             mod.warning_count += 1
-            add_message( 3, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 3, e , __name__ , type(e).__name__ ,  e)
 
         try:
             asnReader = geoip2.database.Reader(geoip_asn_file)
 
         except Exception as e:
             mod.warning_count += 1
-            add_message( 4, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 4, e , __name__ , type(e).__name__ ,  e)
 
         for x in range(selectCursor.rowcount):
             mod.records_processed += 1
@@ -119,19 +119,23 @@ def process(parms):
 
                 if cityData.country.iso_code is not None:
                     country_code = cityData.country.iso_code
-                    country_code = country_code.replace('"', '')
+                    country_code = country_code.replace('"', ' ')
+                    country_code = country_code.replace("'", ' ')
 
                 if cityData.country.name is not None:
                     country = cityData.country.name
-                    country = country.replace('"', '')
+                    country = country.replace('"', ' ')
+                    country = country.replace("'", ' ')
 
                 if cityData.city.name is not None:
                     city = cityData.city.name
-                    city = city.replace('"', '')
+                    city = city.replace('"', ' ')
+                    city = city.replace("'", ' ')
 
                 if cityData.subdivisions.most_specific.name is not None:
                     subdivision = cityData.subdivisions.most_specific.name
-                    subdivision = subdivision.replace('"', '')
+                    subdivision = subdivision.replace('"', ' ')
+                    subdivision = subdivision.replace("'", ' ')
 
                 if cityData.location.latitude is not None:
                     latitude = cityData.location.latitude
@@ -141,47 +145,46 @@ def process(parms):
 
             except Exception as e:
                 mod.warning_count += 1
-                add_message( 9, {e}, {__name__}, {type(e).__name__},  e)
+                add_message( 9, e , __name__ , type(e).__name__ ,  e)
 
             try:
                 asnData = asnReader.asn(ipAddress)
 
                 if asnData.autonomous_system_organization is not None:
                     organization = asnData.autonomous_system_organization
-                    organization = organization.replace('"', '')
+                    organization = organization.replace('"', ' ')
+                    organization = organization.replace("'", ' ')
 
                 asnData_network = asnData.network
 
                 if asnData_network is not None:
                     network = str(asnData_network)
 
-
             except Exception as e:
                 asnData = None
                 network = str(e.network)
                 mod.warning_count += 1
-                add_message( 8, {__name__},{type(e).__name__}, f"asnReader for IP : {ipAddress}", e)
+                add_message( 8, f"asnReader IP : {ipAddress}", __name__ , type(e).__name__ , e )
 
-            updateSql = f"UPDATE log_client SET country_code='{country_code}', " \
-                        f"country='{country}', " \
-                        f"subdivision='{subdivision}', " \
-                        f"city='{city}', " \
-                        f"latitude={latitude}, " \
-                        f"longitude={longitude}, " \
-                        f"organization='{organization}' " \
-                        f" WHERE id= {recID};"
-
-                        # For tomorrow fix - network datatype error converting to string
-                        # f"organization='{organization}', " \
-                        # problem with network datatype I addressed before f-strings
-                        # f"network='{network}' " \ 
+            updateSql = f"UPDATE log_client SET country_code = '{country_code}', " \
+                        f"country = '{country}' , " \
+                        f"subdivision = '{subdivision}' , " \
+                        f"city = '{city}' , " \
+                        f"latitude = {latitude} , " \
+                        f"longitude = {longitude} , " \
+                        f"organization = '{organization}' , " \
+                        f"network = '{network}' " \
+                        f" WHERE id = {recID};"
 
             try:
                 updateCursor.execute(updateSql)
 
             except Exception as e:
                 mod.warning_count += 1
-                add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+
+                sql_message = f"sql : {updateSql} - {e}"
+
+                add_message( 0, sql_message, __name__ , type(e).__name__ ,  e)
 
         app.dbConnection.commit()
         selectCursor.close()

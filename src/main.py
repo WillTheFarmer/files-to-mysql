@@ -152,7 +152,7 @@ def execute_process(process):
                 print(f"There is a problem - data: {data}")
 
         except Exception as e:
-            add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
             #print(f"Error processing {process.get("name")}: {e}")
             return None
 
@@ -165,10 +165,10 @@ def execute_process(process):
         return processInfo
 
     except ValueError as e:
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     except FileNotFoundError as e:
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
 def process_files(process_list=[]):
     # display console message log header
@@ -233,7 +233,7 @@ def process_files(process_list=[]):
                 log_processes.append(processInfo)
     
         except Exception as e:
-            add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
             # print(f"Error processing {processInfo}: {e}")
             # break  # Exit the loop entirely on error
             continue  # Or skip this process and move to next
@@ -245,7 +245,7 @@ def process_files(process_list=[]):
 
     except Exception as e:
         app.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     # commit and close 
     app.dbConnection.commit()

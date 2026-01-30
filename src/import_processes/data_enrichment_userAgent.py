@@ -45,7 +45,7 @@ def process(parms):
 
     except Exception as e:
         mod.error_count += 1
-        add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+        add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     for x in range(selectCursor.rowcount):
 
@@ -110,7 +110,7 @@ def process(parms):
 
             except Exception as e:
                 mod.error_count += 1
-                add_message( 0, {e}, {__name__}, {type(e).__name__},  e)
+                add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
     app.dbConnection.commit()
 
