@@ -3,7 +3,7 @@
 `main:process_files` Import Load Summary from ingesting log files included in repository.
 
 ### Application runs on Windows, Linux & MacOS - Database runs on MySQL & MariaDB
-***JSON data-driven*** App & MySQL schema to automate importing access & error files, normalizing log data into database and generating a well-documented data lineage audit trail 24/7.
+***JSON data-driven*** App & MySQL schema to automate import of access & error files, normalize log data into database and generate a well-documented data lineage audit trail.
 
 ## Two Collections and Factory Method
 
@@ -27,7 +27,7 @@ To process different log format files in different directories the `config.json`
 
 Many `config.json` Process datasets contain `database_module.py` and `data_file_loader.py` for ***module_name*** property. These 2 modules are often reused with different `attributes` property values.
 
-### The data-driven properties allows flexibility and expandability
+### The data-driven properties allow flexibility and expandability
 
 3) All ***Process Modules*** have `process` method and ***ProcessProperties*** subclass `properties_process.py`. 
 
@@ -88,12 +88,19 @@ Single quotes around 'PyMySQL[rsa]' package required on macOS.
 |[geoip2](https://pypi.org/project/geoip2/)|python -m pip install geoip2|[maxmind/GeoIP2-python](https://github.com/maxmind/GeoIP2-python)|
 |[tabulate](https://pypi.org/project/tabulate/)|python -m pip install tabulate|[astanin/python-tabulate](https://github.com/astanin/python-tabulate)|
 
-## NGINX log formats and NGINX data testing
-Apache log formats have been thoroughly researched and tested. NGINX log formats have not. This weekend my focus is NGINX data.
+## NGINX log formats and data - not tested yet
 
-***Repository NGINX files are standard access and error formats from new NGINX server*** 
+From documentation read NGINX standard access logformat is same as Apache combined. I have not verified yet.
+
+NGINX data analysis is happening this weekend and done for Ground Hound Day release.
+
+### Repository NGINX files are standard access and error formats from new NGINX server
 
 NGINX log files in `/data/nginx_combined/` and `/data/nginx_error/` are from new NGINX server.
+
+Apache log formats have been thoroughly researched and tested. 
+
+### NGINX MySQL procedural code
 
 NGINX Stored Procedures are copies of Apache Stored Procedures and then stripped code down to process `combined` format only.
 
@@ -114,7 +121,7 @@ Steps make installation quick and straightforward. Application will be ready to 
 
 This table is helpful information when learning the App. The message data is raw and will be refined in future.
 
-During installation and execution Python App & MySQL writes all messages, warnings and errors to MySQL schema `import_message` TABLE. 
+During installation and execution Python & MySQL write all messages, warnings and errors to MySQL schema `import_message` TABLE. 
 
 Screenshot shows 3 records inserted running repository without downloading GeoIP database first. 
 
