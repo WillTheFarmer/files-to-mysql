@@ -115,3 +115,6 @@ NGINX Stored Procedures are copies of Apache Stored Procedures and then stripped
 `import_error_nginx.sql` started as copy of `import_error_apache.sql`
 
 The Apache and NGINX code demonstrates how to incorporate without code modification of current processes.
+
+## Visual Interface App
+in my development queue [MySQL2ApacheECharts](https://github.com/willthefarmer/mysql-to-apache-echarts) is a ***visualization tool*** for the database schema. The Web interface consists of [Express](https://github.com/expressjs/express) web application frameworks with [W2UI](https://github.com/vitmalina/w2ui) drill-down data grids for Data Point Details.

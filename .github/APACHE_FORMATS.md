@@ -99,9 +99,10 @@ In order to consolidate logs from multiple domains `%v - canonical ServerName` i
 
 Options to associate ServerName and server_port to Access and Error logs are:
 
-1) Image shows three configurations. Top (A) is default and Bottom (C) will SET  `server_name` and `server_port` COLUMNS of `load_error_default` and `load_access_combined` TABLES during Python `LOAD DATA LOCAL INFILE` execution.
+1) ***Process Datasets*** have an `attributes` property - SET  `server_name` and `server_port`
 
-![load_settings_variables.png](./images/load_settings_variables.png)
+### Process properties - application Processes
+![Process Properties](./images/process_properties.png)
 
 2) Manually ***UPDATE*** `server_name` and `server_port` COLUMNS of `load_error_default` and `load_access_combined` TABLES after STORED PROCEDURES `process_access_parse` 
 and `process_error_parse` and before `process_access_import` and `process_error_import`. 

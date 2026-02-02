@@ -1,4 +1,3 @@
-
 ## Installation Instructions
 Steps make installation quick and straightforward. Application will be ready to import HTTP logs on completion.
 
@@ -51,5 +50,3 @@ Next time `files_import.py` is run only new files since last run will be process
 If issues occur check MySQL schema `import_message` TABLE. All messages INSERT unless Database Function Permissions problem.
 
 The GeoIP databases are not included in repository. Links to download GeoLite2 and Geo-IP databases are in Data Enrichments section. Both are easy to download and free.
-## Visual Interface App
-in my development queue [MySQL2ApacheECharts](https://github.com/willthefarmer/mysql-to-apache-echarts) is a ***visualization tool*** for the database schema. The Web interface consists of [Express](https://github.com/expressjs/express) web application frameworks with [W2UI](https://github.com/vitmalina/w2ui) drill-down data grids for Data Point Details.
