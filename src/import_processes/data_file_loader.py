@@ -86,8 +86,12 @@ def process_file(rawFile):
     if days_since_imported is None:
 
         if app.error_details:
-            #print(f"load_table : {mod.load_table} log_format : {mod.log_format} server_name : {mod.log_server} server_port : {mod.log_server_port} loadFile : {loadFile}")
-            print(f"load_table : {mod.load_table} log_format : {mod.log_format} server_name : {mod.log_server} server_port : {mod.log_server_port} days_since_imported : {days_since_imported}")
+            print(f"load_table : {color.fg.GREEN}{mod.load_table}{color.END} " \
+                  f"log_format : {color.fg.GREEN}{mod.log_format}{color.END} " \
+                  f"server_name : {color.fg.GREEN}{mod.log_server}{color.END} " \
+                  f"server_port : {color.fg.GREEN}{mod.log_server_port}{color.END} " \
+                  f"loadFile : {color.fg.GREEN}{loadFile}{color.END}" \
+                  f"days_since_imported : {color.fg.GREEN}{days_since_imported}{color.END}")
 
         mod.files_processed += 1
 
@@ -105,6 +109,7 @@ def process_file(rawFile):
             fileInsertFileID = fileInsertTupleID[0][0]
 
         except Exception as e:
+            print(f"load_table : {mod.load_table} log_format : {mod.log_format} server_name : {mod.log_server} server_port : {mod.log_server_port} loadFile : {loadFile}")
             mod.error_count += 1
             add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
@@ -122,35 +127,22 @@ def process_file(rawFile):
             print(f"load_table : {mod.load_table} log_format : {mod.log_format} server_name : {mod.log_server} server_port : {mod.log_server_port} loadFile : {loadFile}")
 
         if mod.log_format=="apache_error":
-          fileLoadSQL_format = f" FIELDS TERMINATED BY ']' ESCAPED BY '\r'"
+          fileLoadSQL_format = " FIELDS TERMINATED BY ']' ESCAPED BY '\r'"
 
         elif mod.log_format=="nginx_error":
-          fileLoadSQL_format = f" FIELDS TERMINATED BY ']' ESCAPED BY '\\\\'" # Standard NGINX JSON/CSV escaping
+          fileLoadSQL_format = " FIELDS TERMINATED BY ']' ESCAPED BY '\\\\'"
 
-        elif mod.log_format=="apache_common" or mod.log_format=="apache_combined" or mod.log_format=="apacheVhost":
-            fileLoadSQL_format = (
-                f"FIELDS TERMINATED BY ' ' "  # Crucial for User-Agents/Referers
-                f"OPTIONALLY ENCLOSED BY '\"' "
-                f"ESCAPED BY '\r'"
-            )
-
-        elif mod.log_format=="nginx_combined":
-            fileLoadSQL_format = (
-                f"FIELDS TERMINATED BY ' ' " 
-                f"OPTIONALLY ENCLOSED BY '\"' " # Crucial for User-Agents/Referers
-                f"ESCAPED BY '\\\\'"            # Standard NGINX JSON/CSV escaping
-            )
-
-        # For the new NGINX CSV format
-        elif mod.log_format=="nginx_csv2mysql":
-            fileLoadSQL_format = (
-                f"FIELDS TERMINATED BY ',' " 
-                f"OPTIONALLY ENCLOSED BY '\"' " # Crucial for User-Agents/Referers
-                f"ESCAPED BY '\\\\'"            # Standard NGINX JSON/CSV escaping
-            )
+        elif mod.log_format=="apache_common" or mod.log_format=="apache_combined" or mod.log_format=="apache_vhost":
+            fileLoadSQL_format = " FIELDS TERMINATED BY ' ' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\r'"
 
         elif mod.log_format=="apache_csv2mysql":
             fileLoadSQL_format = " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\r'"
+
+        elif mod.log_format=="nginx_default":
+            fileLoadSQL_format = " FIELDS TERMINATED BY ' ' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\\\\'"
+
+        elif mod.log_format=="nginx_csv2mysql":
+            fileLoadSQL_format = " FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '\"' ESCAPED BY '\\\\'"
 
         else:
             mod.error_count += 1

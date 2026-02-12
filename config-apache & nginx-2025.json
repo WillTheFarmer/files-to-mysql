@@ -23,11 +23,11 @@
       "attributes": {
         "print": 2,
         "log_format": "apache_error",
-        "load_table": "load_error_apache",
+        "load_table": "load_error_apache_default",
         "path": "/Users/farmf/Documents/apacheLogs/2025_apache/**/*error*.*",
         "recursive": true,
-        "server": "mydomain.com",
-        "server_port": 443
+        "server": "",
+        "server_port": 0
       }
     },
     {
@@ -39,7 +39,7 @@
       "status": "Active",
       "attributes": {
         "print": 2,
-        "module_name": "parse_error_apache",
+        "module_name": "parse_error_apache_default",
         "module_parm1": "python"
       }
     },
@@ -52,7 +52,7 @@
       "status": "Active",
       "attributes": {
         "print": 2,
-        "module_name": "import_error_apache",
+        "module_name": "import_error_apache_default",
         "module_parm1": "python"
       }
     },
@@ -66,11 +66,11 @@
       "attributes": {
         "print": 2,
         "log_format": "apache_csv2mysql",
-        "load_table": "load_access_csv",
+        "load_table": "load_access_apache_csv2mysql",
         "path": "/Users/farmf/Documents/apacheLogs/2025_apache/**/*access*.*",
         "recursive": true,
-        "server": "mydomain.com",
-        "server_port": 443
+        "server": "",
+        "server_port": 0
       }
     },
     {
@@ -125,7 +125,7 @@
       "status": "InActive",
       "attributes": {
         "print": 2,
-        "module_name": "parse_error_nginx",
+        "module_name": "parse_error_nginx_default",
         "module_parm1": "python"
       }
     },
@@ -138,7 +138,7 @@
       "status": "InActive",
       "attributes": {
         "print": 2,
-        "module_name": "import_error_nginx",
+        "module_name": "import_error_nginx_default",
         "module_parm1": "python"
       }
     },
@@ -206,7 +206,7 @@
       "attributes": {
         "print": 1,
         "module_name": "normalize_useragent",
-        "module_parm1": "Python Processed"
+        "module_parm1": "python"
       }
     },
     {
@@ -232,7 +232,7 @@
       "attributes": {
         "print": 1,
         "module_name": "normalize_client",
-        "module_parm1": "Python Processed"
+        "module_parm1": "python"
       }
     }
   ]

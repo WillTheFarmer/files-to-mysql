@@ -82,7 +82,7 @@
     {
       "id": "apacheErrorLoad",
       "name": "Apache error in Default file load",
-      "description": "Sucks up all error files in repository data folder",
+      "description": "Sucks up Apache error files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Apache Error",
       "status": "Active",
@@ -125,7 +125,7 @@
     {
       "id": "apacheCombinedLoad",
       "name": "Apache Combined Load",
-      "description": "Sucks up all access files in repository data folder",
+      "description": "Sucks up Apache access files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Apache Combined",
       "status": "Active",
@@ -168,7 +168,7 @@
     {
       "id": "apacheVhostLoad",
       "name": "Apache Vhost Load",
-      "description": "Sucks up all access files in repository data folder",
+      "description": "Sucks up Apache access files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Apache Vhost",
       "status": "Active",
@@ -178,8 +178,8 @@
         "load_table": "load_access_apache_vhost",
         "path": "data/apache_vhost/**/*access*.*",
         "recursive": true,
-        "server": "mydomain.com",
-        "server_port": 443
+        "server": "",
+        "server_port": 0
       }
     },
     {
@@ -211,18 +211,18 @@
     {
       "id": "apacheCsv2mysqlLoad",
       "name": "Apache Access CSV Load",
-      "description": "Sucks up all access files in repository data folder",
+      "description": "Sucks up Apache access files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Apache Csv2mysql",
       "status": "Active",
       "attributes": {
         "print": 2,
         "log_format": "apache_csv2mysql",
-        "load_table": "load_access_access_csv2mysql",
+        "load_table": "load_access_apache_csv2mysql",
         "path": "data/apache_csv2mysql/**/*access*.*",
         "recursive": true,
-        "server": "mydomain.com",
-        "server_port": 443
+        "server": "",
+        "server_port": 0
       }
     },
     {
@@ -254,7 +254,7 @@
     {
       "id": "nginxErrorLoad",
       "name": "NGINX Error Load",
-      "description": "Sucks up all access files in repository data folder",
+      "description": "Sucks up NGINX access files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Nginx Error",
       "status": "Active",
@@ -297,7 +297,7 @@
     {
       "id": "nginxDefaultLoad",
       "name": "NGINX Default Load",
-      "description": "Sucks up all access files in repository data folder",
+      "description": "Sucks up NGINX access files in repository data folder",
       "module_name": "data_file_loader",
       "group": "Nginx Access",
       "status": "Active",
@@ -305,7 +305,7 @@
         "print": 2,
         "log_format": "nginx_default",
         "load_table": "load_access_nginx_default",
-        "path": "data/nginx_combined/**/*access*.*",
+        "path": "data/nginx_default/**/*access*.*",
         "recursive": true,
         "server": "mydomain.com",
         "server_port": 443
@@ -321,6 +321,19 @@
       "attributes": {
         "print": 2,
         "module_name": "parse_access_nginx_default",
+        "module_parm1": "python"
+      }
+    },
+    {
+      "id": "nginxDefaultImport",
+      "name": "NGINX Default Import",
+      "description": "NGINX access format Default import process at database",
+      "module_name": "database_module",
+      "group": "Apache Csv2mysql",
+      "status": "Active",
+      "attributes": {
+        "print": 2,
+        "module_name": "import_access_nginx_default",
         "module_parm1": "python"
       }
     },
