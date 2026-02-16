@@ -14,4 +14,6 @@ This repository exists because I volunteer at local nonprofit that provides food
 
 Surprisingly none I found performed any data normalization and were very primitive. The lack of existing relational database open-source solutions led to creation of this solution.
 
-March 2025 was conservatively 1400 hours :hourglass_flowing_sand: of researching existing solutions, database design and SQL/Python development. Python code re-design added another 600 hours. It is much more time then I intended to invest but it did produce my first open-source software and first Python application.
+March 2025 I had conservatively 1400 hours :hourglass_flowing_sand: of researching existing solutions, database design and SQL/Python development. The January 2026 Python code re-design added another 600 hours. System-level improvements is another 500 hours.
+
+This project started as investigation on how to turn 2 years of Apache log files on a ZIP drive into a MySQL database. I knew nothing about Apache log files. Project has consumed every waking hour of 2026 except 5 days on billed project.
