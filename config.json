@@ -2,7 +2,7 @@
   "mysql": {
     "host": "localhost",
     "port": 3606,
-    "user": "http_upload",
+    "user": "files_to_mysql",
     "password": "Just4TheData",
     "schema": "http_logs"
   },
@@ -76,13 +76,24 @@
       "recursive": false,
       "interval": 15,
       "process_list": ["nginxDefaultLoad","nginxDefaultParse","nginxDefaultImport"]
+    },
+    {
+      "id": "nginx_csv2mysql",
+      "name": "NGINX access Csv2mysql format",
+      "description": "watch for NGINX files in Csv2mysql format",
+      "status": "Active",
+      "print": 2,
+      "path": "data/nginx_csv2mysql/",
+      "recursive": false,
+      "interval": 15,
+      "process_list": ["nginxCsv2mysqlLoad","nginxCsv2mysqlParse","nginxCsv2mysqlImport"]
     }
   ],
   "processes": [
     {
       "id": "apacheErrorLoad",
-      "name": "Apache error in Default file load",
-      "description": "Sucks up Apache error files in repository data folder",
+      "name": "Apache Error Load",
+      "description": "Sucks up Apache error files in repository",
       "module_name": "data_file_loader",
       "group": "Apache Error",
       "status": "Active",
@@ -125,7 +136,7 @@
     {
       "id": "apacheCombinedLoad",
       "name": "Apache Combined Load",
-      "description": "Sucks up Apache access files in repository data folder",
+      "description": "Sucks up Apache Combined files in repository",
       "module_name": "data_file_loader",
       "group": "Apache Combined",
       "status": "Active",
@@ -168,7 +179,7 @@
     {
       "id": "apacheVhostLoad",
       "name": "Apache Vhost Load",
-      "description": "Sucks up Apache access files in repository data folder",
+      "description": "Sucks up Apache Vhost files in repository",
       "module_name": "data_file_loader",
       "group": "Apache Vhost",
       "status": "Active",
@@ -210,8 +221,8 @@
     },
     {
       "id": "apacheCsv2mysqlLoad",
-      "name": "Apache Access CSV Load",
-      "description": "Sucks up Apache access files in repository data folder",
+      "name": "Apache Csv2mysql Load",
+      "description": "Sucks up Apache Csv2mysql files in repository",
       "module_name": "data_file_loader",
       "group": "Apache Csv2mysql",
       "status": "Active",
@@ -227,7 +238,7 @@
     },
     {
       "id": "apacheCsv2mysqlParse",
-      "name": "Apache Csv22mysql Parse",
+      "name": "Apache Csv2mysql Parse",
       "description": "Access Csv2mysql parse process at database",
       "module_name": "database_module",
       "group": "Apache Csv2mysql",
@@ -254,7 +265,7 @@
     {
       "id": "nginxErrorLoad",
       "name": "NGINX Error Load",
-      "description": "Sucks up NGINX access files in repository data folder",
+      "description": "Sucks up NGINX Default error files in repository",
       "module_name": "data_file_loader",
       "group": "Nginx Error",
       "status": "Active",
@@ -297,7 +308,7 @@
     {
       "id": "nginxDefaultLoad",
       "name": "NGINX Default Load",
-      "description": "Sucks up NGINX access files in repository data folder",
+      "description": "Sucks up NGINX Default access files in repository",
       "module_name": "data_file_loader",
       "group": "Nginx Access",
       "status": "Active",
@@ -314,7 +325,7 @@
     {
       "id": "nginxDefaultParse",
       "name": "NGINX Default Parse",
-      "description": "NGINX access Format default parse process at database",
+      "description": "NGINX access format Default parse process at database",
       "module_name": "database_module",
       "group": "Nginx Access",
       "status": "Active",
@@ -334,6 +345,49 @@
       "attributes": {
         "print": 2,
         "module_name": "import_access_nginx_default",
+        "module_parm1": "python"
+      }
+    },
+{
+      "id": "nginxCsv2mysqlLoad",
+      "name": "NGINX Csv2mysql Load",
+      "description": "Sucks up NGINX Csv2mysql files in repository",
+      "module_name": "data_file_loader",
+      "group": "Nginx Access",
+      "status": "Active",
+      "attributes": {
+        "print": 2,
+        "log_format": "nginx_csv2mysql",
+        "load_table": "load_access_nginx_csv2mysql",
+        "path": "data/nginx_csv2mysql/**/*access*.*",
+        "recursive": true,
+        "server": "mydomain.com",
+        "server_port": 443
+      }
+    },
+    {
+      "id": "nginxCsv2mysqlParse",
+      "name": "NGINX Csv2mysql Parse",
+      "description": "NGINX access format Csv2mysql parse process at database",
+      "module_name": "database_module",
+      "group": "Nginx Access",
+      "status": "Active",
+      "attributes": {
+        "print": 2,
+        "module_name": "parse_access_nginx_csv2mysql",
+        "module_parm1": "python"
+      }
+    },
+    {
+      "id": "nginxCsv2mysqlImport",
+      "name": "NGINX Csv2mysql Import",
+      "description": "NGINX access format Csv2mysql import process at database",
+      "module_name": "database_module",
+      "group": "Apache Csv2mysql",
+      "status": "Active",
+      "attributes": {
+        "print": 2,
+        "module_name": "import_access_nginx_csv2mysql",
         "module_parm1": "python"
       }
     },

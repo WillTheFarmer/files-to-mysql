@@ -42,7 +42,7 @@ from os import sep
 
 from glob import glob
 
-import pymysql
+import MySQLdb
 
 from src.apis.utilities import copy_backup_file
 
@@ -175,7 +175,7 @@ def process_file(rawFile):
                 fileRecordsLoaded = fileRecordsLoadedTuple[0][0]
                 mod.records_processed = mod.records_processed + fileRecordsLoaded
 
-            except pymysql.Error as e:
+            except MySQLdb.Error as e:
                 mod.error_count += 1
                 add_message( 0, e , __name__ , type(e).__name__ ,  e)
 
@@ -186,7 +186,7 @@ def process_file(rawFile):
 
 def process(parms):
 
-    mod.set_defaults()
+    mod.set_defaults( parms.get("id") , __name__ )
 
     # shared application-level connection for any database message logging done during file copy process.
     mod.cursor = app.dbConnection.cursor()
@@ -228,7 +228,7 @@ def process(parms):
                   else:
                       print(f"No record found for {filename}")
 
-            except pymysql.Error as e:
+            except MySQLdb.Error as e:
                 add_message( 0, __name__ , type(e).__name__ , e )
                 mod.error_count += 1
 
@@ -237,5 +237,8 @@ def process(parms):
             app.dbConnection.commit()
             if mod.display_log >= 2:
                 print("All files processed successfully (or continued past errors). Changes committed.")
+
+    # UPDATE import_process table processing metrics
+    mod.update_import_process()
 
     return mod.process_report()

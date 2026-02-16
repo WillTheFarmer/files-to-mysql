@@ -30,9 +30,11 @@ from apis.color_class import color
 # user-agents worker 
 from user_agents import parse
 
+import MySQLdb
+
 def process(parms):
 
-    mod.set_defaults()
+    mod.set_defaults( parms.get("id") , __name__ )
 
     display_log = parms.get("print")
     app.cursor = app.dbConnection.cursor()
@@ -117,5 +119,8 @@ def process(parms):
     selectCursor.close()
 
     updateCursor.close()
+
+    # UPDATE import_process table processing metrics
+    mod.update_import_process()
 
     return mod.process_report()

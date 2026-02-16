@@ -36,9 +36,11 @@ from os import path
 # used to remove \\ from paths
 from os import sep
 
+import MySQLdb
+
 def process(parms):
 
-    mod.set_defaults()
+    mod.set_defaults( parms.get("id") , __name__ )
 
     display_log = parms.get("print")
     geoip_city = parms.get("city")
@@ -179,15 +181,20 @@ def process(parms):
             try:
                 updateCursor.execute(updateSql)
 
+            except MySQLdb.Error as e:
+                mod.error_count += 1
+                add_message( 0, e , __name__ , type(e).__name__ ,  e)
+
             except Exception as e:
                 mod.warning_count += 1
-
                 sql_message = f"sql : {updateSql} - {e}"
-
                 add_message( 0, sql_message, __name__ , type(e).__name__ ,  e)
 
         app.dbConnection.commit()
         selectCursor.close()
         updateCursor.close()
+
+        # UPDATE import_process table processing metrics
+        mod.update_import_process()
 
     return mod.process_report()

@@ -25,9 +25,9 @@ from apis.message_app import add_message
 from apis.properties_process import DatabaseModule as mod
 
 # Color Class used app-wide for Message Readability in console
-# from apis.color_class import color
+from apis.color_class import color
 
-import pymysql
+import MySQLdb
 # Define specific MySQL error codes for conditional handling
 # Example error codes: 1045 (Access denied), 1062 (Duplicate entry), 1146 (No such table)
 # You might need to adjust these based on your specific error handling needs.
@@ -36,7 +36,7 @@ ERROR_NO_SUCH_TABLE = 1146
 
 def process(parms):
 
-    mod.set_defaults()
+    mod.set_defaults( parms.get("id") , __name__ )
 
     display_log = parms.get("print")
     module_name = parms.get("module_name")
@@ -44,12 +44,52 @@ def process(parms):
     
     mod.cursor = app.dbConnection.cursor()
 
+    # print(f"module_name: {module_name} importProcessID = {app.importProcessID}")
+
     try:
         mod.cursor.callproc(module_name,
                             [module_parm1,
                             str(app.importProcessID)])
 
-    except pymysql.Error as e:
+        sql_string = (
+            f"SELECT files_found, "
+            f"files_processed, "
+            f"records_processed, "
+            f"error_count, "
+            f"process_seconds, " 
+            f"started, " 
+            f"completed FROM import_process WHERE id = {app.importProcessID};"
+        )
+
+        # print(sql_string)
+
+        try:
+            app.cursor.execute( sql_string )
+
+            result = app.cursor.fetchone()
+            
+            if result:
+                # print( result )
+
+                mod.files_found = result[0]
+                mod.files_processed = result[1]
+                mod.records_processed = result[2]
+                mod.error_count = result[3]
+                mod.process_seconds = result[4]
+
+                if result[6]:
+                    mod.process_status = "Complete"
+
+        except MySQLdb.Error as e:
+            app.error_count += 1
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
+
+        except Exception as e:
+            app.error_count += 1
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
+
+
+    except MySQLdb.Error as e:
         mod.error_count += 1
         add_message( 0, e , __name__ , type(e).__name__ ,  e)
 

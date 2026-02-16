@@ -1,4 +1,12 @@
 # version 4.0.2 - 02/13/2026 - INT to BIGINT, PyMSQL to MySQLdb, mysql procedures for each server & format - see changelog
+
+# application-level properties and references shared across app modules (files) 
+from apis.properties_app import app
+# application-level error handle
+from apis.message_app import add_message
+
+import MySQLdb
+
 class ProcessProperties:
     """ standard process properties required for all import_process modules """
     # process-level metrics - columns in import_process TABLE
@@ -11,12 +19,14 @@ class ProcessProperties:
     # set to process error message on failure. Import Load (main:process_files) continues to execute next child process.
     # process_status included in process_list[]. Displayed at end of main:process_files 
     process_status = None
+    process_name = None
+    module_name = None
     # backup attributes at both app-level & process-level property classes
     backup_days = 0
     backup_path = ""
 
     @classmethod
-    def set_defaults(cls):
+    def set_defaults(cls , process , module ):
         """ properties shared by all import_processes - reset process variables at start of process() """
         cls.files_found = 0
         cls.files_processed = 0
@@ -25,6 +35,43 @@ class ProcessProperties:
         cls.warning_count = 0
         cls.process_seconds = 0.000000
         cls.process_status = None
+        cls.process_name = process
+        cls.module_name = module
+
+    @classmethod
+    def update_import_process(cls):
+        sql_string = (
+            f"UPDATE import_process SET files_found = {cls.files_found} , "
+            f"files_processed = {cls.files_processed} , "
+            f"records_processed = {cls.records_processed} , "
+            f"warning_count = {cls.warning_count} , "
+            f"error_count = {cls.error_count} , "
+            f"process_seconds = {cls.process_seconds} , " 
+            f"process_name = '{cls.process_name}' , " 
+            f"module_name = '{cls.module_name}' , " 
+            f"completed = now() "
+            f"WHERE id = {app.importProcessID};"
+          )
+
+          #print(sql_string)
+
+        try:
+            app.cursor.execute( sql_string )
+
+            result = app.cursor.fetchone()
+            
+            if result:
+                cls.process_status = "Complete"
+                print( result )
+
+        except MySQLdb.Error as e:
+            app.error_count += 1
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
+
+        except Exception as e:
+            app.error_count += 1
+            add_message( 0, e , __name__ , type(e).__name__ ,  e)
+ 
 
     @classmethod
     def process_report(cls):

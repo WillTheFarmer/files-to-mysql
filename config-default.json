@@ -2,7 +2,7 @@
   "mysql": {
     "host": "localhost",
     "port": 3306,
-    "user": "http_upload",
+    "user": "files_to_mysql",
     "password": "Just4TheData",
     "schema": "http_logs"
   },
