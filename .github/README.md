@@ -92,8 +92,14 @@ Single quotes around 'PyMySQL[rsa]' package required on macOS.
 |[geoip2](https://pypi.org/project/geoip2/)|python -m pip install geoip2|[maxmind/GeoIP2-python](https://github.com/maxmind/GeoIP2-python)|
 |[tabulate](https://pypi.org/project/tabulate/)|python -m pip install tabulate|[astanin/python-tabulate](https://github.com/astanin/python-tabulate)|
 
-## Database designed for HTTP log data analysis
+## Database schema for file import process | importfileid is FOREIGN KEY 
 ![Entity Relationship Diagram](./images/entity_relationship_diagram.png)
+
+ALTER TABLE http_logs.access_log
+ADD CONSTRAINT access_log_importfileid
+FOREIGN KEY (importfileid)
+REFERENCES system_files.import_file (id)
+ON DELETE RESTRICT ON UPDATE CASCADE;
 
 ## MySQL database schema DDL and build scripts
 [mysql-http-logs](https://github.com/willthefarmer/mysql-http-logs) includes all ***database DDL and build scripts*** for the database schema used in this repository.
